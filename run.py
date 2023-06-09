@@ -15,12 +15,15 @@ def get_user_data():
     """
     Get the body weight and height from the user to calculate BMI
     """
-    print("Great ! Please provide your body weight and height in")
-    print("in the format of 70, 175")
+    
+    print("Great !")
+    print("Please provide your body weight(numbers only in kgs)")
+    data1_str = int(input("Enter weight here:\n "))
+    print("now enter your height(numbers only in cms)")
+    data2_str = int(input("Enter the weight and height here:\n "))
+    print(f"Weight and height provided are {data1_str, data2_str}")
 
-    data = input("Enter the weight and height here:\n ")
-    print(f"Weight and height provided are {data}")
-    user_data = data.split(",")
+    data1_str=data2_str = user_data
     validate_data(user_data) 
 
 
@@ -32,12 +35,13 @@ def validate_data(values):
     """
 
     try:
-        if len(values) != 2:
-            raise ValueError(
-            f"exactly 2 value required, you provided {len(values)}"
-        )
+        [int(value) for value in values]
+        if len(values) != 3:
+            print(f"Please enter valid numbers")
     except ValueError as e:
-        print(f"Provided data is invalid: {e}, please try again\n ")
+        print(f"Enter only numbers please: {e}, please try again.\n")
 
+
+  
 
 get_user_data()
