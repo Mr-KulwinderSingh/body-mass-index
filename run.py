@@ -11,15 +11,16 @@ if start.lower() != "yes":
     quit()
 
 
-def get_weight_and_height():
+def get_user_data():
     """
     Get the body weight and height from the user to calculate BMI
     """
-    print("Great ! Please provide your body weight and height in the following format ")
-    print("70, 175")
+    print("Great ! Please provide your body weight and height in")
+    print("in the format of 70, 175")
 
-    user_values_str = input("Enter the weight and height here:\n ")
-    user_data = user_values_str.split(", ")
+    data = input("Enter the weight and height here:\n ")
+    print(f"Weight and height provided are {data}")
+    user_data = data.split(",")
     validate_data(user_data) 
 
 
@@ -36,7 +37,7 @@ def validate_data(values):
             f"exactly 2 value required, you provided {len(values)}"
         )
     except ValueError as e:
-        print(f"Provided Credentials are invalid: {e}, please try again\n ")
+        print(f"Provided data is invalid: {e}, please try again\n ")
 
 
-get_weight_and_height()
+get_user_data()
