@@ -17,25 +17,32 @@ def get_user_data():
     """
     Get the body weight and height from the user to calculate BMI
     """
-    
-    print("Great !")
-    name = input("Please enter your name:\n")
-    print("Please provide your body weight(in kgs)")
 
-    age = int(input("Please enter your age:\n"))
-    print(age)
+    while True:
     
-    data1 = int(input("Enter your weight here:\n "))
-    print("now enter your height(only in cms)")
-    data2 = int(input("Enter the height here:\n "))
-    print(f"Your weight is : {data1}kgs and height is :{data2}cms\n")
+        print("Great !")
+        name = input("Please enter your name:\n")
+        
+        age = int(input("Please enter your age:\n"))
+        
+        print("Please provide your body weight(in kgs)")
+        data1 = int(input("Enter your weight here:\n "))
+
+        print("now enter your height(only in cms)")
+        data2 = int(input("Enter the height here:\n "))
+        print(f"Your weight is : {data1}kgs and height is :{data2}cms\n")
 
 
-    weight = data1 
-    height = data2
-    user_age = age 
-    
-    validate_input(weight, height, user_age)
+        weight = data1 
+        height = data2
+        user_age = age
+        
+        
+        if validate_input(weight, height, user_age):
+            print("Given entries are valid!")
+            break
+
+    return name, weight, height, user_age
 
 def validate_input(weight, height, user_age):
     """
@@ -54,6 +61,10 @@ def validate_input(weight, height, user_age):
             )
     except ValueError as e:
             print(f"Invalid entry: {e}, please try again.\n ")
+            return False
+
+    return True
+
 
 
 def calculate_bmi(name, data1, data2):
@@ -76,7 +87,7 @@ def calculate_bmi(name, data1, data2):
     
 
 
-get_user_data()
+name, user_age, weight, height = get_user_data()
 
 
 
