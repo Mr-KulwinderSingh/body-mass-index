@@ -15,7 +15,10 @@ if start.lower() != "yes":
 
 def get_user_data():
     """
-    Get the body weight and height from the user to calculate BMI
+    Get the user data (name, age, body weight and height) from the
+    user to calculate BMI. Run a while loop to collect the valid 
+    data appropriate to the required age, the loop will be keep 
+    requesting until the given data is valid.
     """
 
     while True:
@@ -51,7 +54,7 @@ def validate_input(weight, height, user_age):
     integers, or there aren't exact values as per requirement 
     """
     try:
-        if user_age < 2:
+        if user_age < 5:
             raise ValueError(
                 f"Sorry age should be above 2 years you provided {user_age}"
             )
@@ -67,15 +70,15 @@ def validate_input(weight, height, user_age):
 
 
 
-def calculate_bmi(name, data1, data2):
+def calculate_bmi(name, weight, height):
     """
-    It calculate the BMI from data received from get user data
-    function and produce the required result, it also tells
-    the user if their wieght is good or hight as per BMI
+    It calculates the BMI of the data received from the user. 
+    and generates the required result, it also tells
+    the user if their wieght is good or high as per BMI
     calculations
     """ 
-    height = data2 / 100
-    bmi = data1 / (height ** 2) 
+    height = height / 100
+    bmi = weight / (height ** 2) 
     result = round(bmi,2)
     print(f"Hey " + name +" "+ "your BMI is:", result)
 
@@ -88,6 +91,7 @@ def calculate_bmi(name, data1, data2):
 
 
 name, user_age, weight, height = get_user_data()
+calculate_bmi(name, weight, height)
 
 
 
