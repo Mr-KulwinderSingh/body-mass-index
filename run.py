@@ -17,32 +17,27 @@ def get_user_data():
     """
     
     print("Great !")
-    print("Please provide your body weight(numbers only in kgs)")
-    data1 = int(input(len("Enter weight here:\n ")))
-    print("now enter your height(numbers only in cms)")
+    print("Please provide your body weight(in kgs)")
+    name = input("Please enter your name:\n")
+    data1 = int(input("Enter your weight here:\n "))
+    print("now enter your height(only in cms)")
     data2 = int(input("Enter the height here:\n "))
     print(f"Your weight is : {data1}kgs and height is :{data2}cms ")
 
-    received_data = data1, data2
-    validate_data(received_data)
-
-
-def validate_data(values):
-    """
-    Checks if the given data is in number format, raises 
-    ValueError if there aren't 2 values
-    """
-    print(values)
-    try:
-        if len(values) != 2:
-            raise ValueError(
-                f"Only 2 values required: you provided {len(values)}"
-            )
-    except ValueError as e:
-        print(f"provided data is incorrect: {e} please try again\n")
+    calculate_bmi(name, data1, data2)
 
 
 
+def calculate_bmi(name, data1, data2):
+    height = data2 / 100
+    bmi = data1 / (height ** 2) 
+    if bmi < 25:
+        print(name + "You have a good body weight :)")
+    else:
+        print(name + "I'm sorry your wight is bit high")
+
+    
 
 
 get_user_data()
+
