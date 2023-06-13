@@ -57,7 +57,7 @@ def get_user_data():
         height = data2
         user_age = age
         
-        
+        calculate_bmi(name, weight, height)
 
 
         if validate_input(weight, height, user_age):
@@ -120,23 +120,14 @@ def calculate_bmi(name, weight, height):
         print('\033[31m' + name + " " + "sorry but your weight is a bit high\n")
 
 
-    
-    
-
-    
-
-
-
 def main():
     """
     Runs all the functions in the programme
     """
 
-name, user_age, weight, height = get_user_data()
+    name, user_age, weight, height = get_user_data()
 
 
-
-calculate_bmi(name, weight, height)
 
 main()
 
