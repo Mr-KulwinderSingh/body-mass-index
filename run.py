@@ -46,9 +46,8 @@ def get_user_data():
         height = data2
         user_age = age
         
-        calculate_bmi(name, weight, height)
+        
 
-        print('IN GET_USER_DATA ')
 
         if validate_input(weight, height, user_age):
             print("Given entries are valid!")
@@ -71,14 +70,16 @@ def validate_input(weight, height, user_age):
             raise ValueError(
                 f"Sorry max age to calculate BMI is 100 your age {user_age}"
             )
+        elif weight > 100:
+            raise ValueError(
+                f"Sorry weight should be a valid number you provided {weight}"
+            )
     except ValueError as e:
             print(f"Invalid entry: {e}, please try again.\n ")
             return False
 
     return True
 
-def generate_color():
-    fg()
 
 
 def calculate_bmi(name, weight, height):
@@ -88,16 +89,20 @@ def calculate_bmi(name, weight, height):
     the user if their wieght is good or high as per BMI
     calculations
     """ 
-    print('IN CALCULATE_BMI')
+   
     height = height / 100
     bmi = weight / (height ** 2) 
     result = round(bmi,2)
-    print('\033[32m'f"Hey " + name +" "+ "your BMI is: +", result)
+    print('\033[32m'f"Hey " + name +" "+ "your BMI is:", result)
 
     if result < 25:
         print('\033[32m'+ name + " " + "You have a good weight according to BMI:)\n")
     else:
         print('\033[31m' + name + " " + "sorry but your weight is a bit high\n")
+
+
+    
+    
 
     
 
@@ -109,10 +114,8 @@ def main():
     """
 
 name, user_age, weight, height = get_user_data()
-print('NAME.   :', name)
-print('USER AGE:', user_age)
-print('WEIGHT  :', weight)
-print('HEIGHT  :', height)
+
+calculate_bmi(name, weight, height)
 
 
 
