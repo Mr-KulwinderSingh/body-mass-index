@@ -13,7 +13,7 @@ print("Welcome to the Body_Mass_Index!\n")
 print("As per the modern life style, and living in the world of technology")
 print("every person needs to know what category of BMI he is in\n")
 
-start = input("To start please type yes\n ")
+start = input("To start please type yes:\n ")
 
 if start.lower() != "yes":
     quit()
