@@ -13,6 +13,17 @@ print("Welcome to the Body_Mass_Index!\n")
 print("As per the modern life style, and living in the world of technology")
 print("every person needs to know what category of BMI he is in\n")
 
+print("-------------***** Exceptions and Rare *****--------------------")
+print("----------------------------------------------------------------")
+print("Adult women and men weighing 100kg who are between 201.0cm and ")
+print("219.0 cm tall are considered to be of a healthy weight as measured")
+print("by body mass index (bmi)2, but this BMI is restricted to 200cm height")
+print("----------------------------------------------------------------")
+print("This BMI calculator has limits i.e. it can take the age of the user")
+print("from 2 years to 100 years and weight 5 kgs to 100 kgs plus the height")
+print("restrictions upto 200cm, please consider them before entering")
+print("your details! Good Luck! \n")
+
 start = input("To start please type yes:\n ")
 
 if start.lower() != "yes":
@@ -70,9 +81,17 @@ def validate_input(weight, height, user_age):
             raise ValueError(
                 f"Sorry max age to calculate BMI is 100 your age {user_age}"
             )
-        elif weight > 100:
+        elif weight < 5:
             raise ValueError(
                 f"Sorry weight should be a valid number you provided {weight}"
+            )
+        elif weight > 120:
+            raise ValueError(
+                f"Sorry weight should be a valid number you provided {weight}"
+            )
+        elif height > 200:
+            raise ValueError(
+                f"Sorry above 200cm height is rare and can be unreal you entered: {height}"
             )
     except ValueError as e:
             print(f"Invalid entry: {e}, please try again.\n ")
@@ -115,9 +134,9 @@ def main():
 
 name, user_age, weight, height = get_user_data()
 
+
+
 calculate_bmi(name, weight, height)
-
-
 
 main()
 
