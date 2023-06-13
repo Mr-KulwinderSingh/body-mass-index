@@ -3,6 +3,12 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import math
 
+import colorama 
+from colorama import Fore, Back, Style 
+colorama.init(autoreset= True)
+
+
+
 print("Welcome to the Body_Mass_Index!\n")
 print("As per the modern life style, and living in the world of technology")
 print("every person needs to know what category of BMI he is in\n")
@@ -42,10 +48,12 @@ def get_user_data():
         
         calculate_bmi(name, weight, height)
 
+        print('IN GET_USER_DATA ')
+
         if validate_input(weight, height, user_age):
             print("Given entries are valid!")
             break
-
+        
     return name, weight, height, user_age
 
 def validate_input(weight, height, user_age):
@@ -69,6 +77,8 @@ def validate_input(weight, height, user_age):
 
     return True
 
+def generate_color():
+    fg()
 
 
 def calculate_bmi(name, weight, height):
@@ -78,15 +88,16 @@ def calculate_bmi(name, weight, height):
     the user if their wieght is good or high as per BMI
     calculations
     """ 
+    print('IN CALCULATE_BMI')
     height = height / 100
     bmi = weight / (height ** 2) 
     result = round(bmi,2)
-    print(f"Hey " + name +" "+ "your BMI is:", result)
+    print('\033[32m'f"Hey " + name +" "+ "your BMI is: +", result)
 
     if result < 25:
-        print( name + " " + "You have a good weight according to BMI:)\n")
+        print('\033[32m'+ name + " " + "You have a good weight according to BMI:)\n")
     else:
-        print(name + " " + "sorry but your weight is a bit high\n")
+        print('\033[31m' + name + " " + "sorry but your weight is a bit high\n")
 
     
 
@@ -98,7 +109,12 @@ def main():
     """
 
 name, user_age, weight, height = get_user_data()
-calculate_bmi(name, weight, height)
+print('NAME.   :', name)
+print('USER AGE:', user_age)
+print('WEIGHT  :', weight)
+print('HEIGHT  :', height)
+
+
 
 main()
 
