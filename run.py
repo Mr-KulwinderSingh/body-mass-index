@@ -26,8 +26,12 @@ print("your details! Good Luck! \n")
 
 start = input("To start please type yes:\n ")
 
+
+
 if start.lower() != "yes":
     quit()
+
+
 
 
 def get_user_data():
@@ -126,6 +130,15 @@ def main():
     """
 
     name, user_age, weight, height = get_user_data()
+
+    choice_to_restart = input('Press any key to restart or "q" to quit\n ')
+
+    if choice_to_restart == "q":
+        (quit)
+
+    else:
+
+        main()
 
 
 
