@@ -24,14 +24,15 @@ print("from 2 years to 100 years and weight 5 kgs to 100 kgs plus the height")
 print("restrictions upto 200cm, please consider them before entering")
 print("your details! Good Luck! \n")
 
+
+    
 start = input("To start please type yes:\n ")
 
-
-
-if start.lower() != "yes":
-    quit()
-
-
+while start.lower() != "yes":
+    print(f"If you'd like to start please type 'yes'\n")
+    start = input("To start please type yes:\n ")
+    print(f"You said {start} to start")
+    
 
 
 def get_user_data():
@@ -79,7 +80,7 @@ def validate_input(weight, height, user_age):
     try:
         if user_age < 5:
             raise ValueError(
-                f"Sorry age should be above 2 years you provided {user_age}"
+                f"Sorry age should be above 5 years you provided {user_age}"
             )
         elif user_age > 100:
             raise ValueError(
@@ -95,7 +96,8 @@ def validate_input(weight, height, user_age):
             )
         elif height > 200:
             raise ValueError(
-                f"Sorry above 200cm height is rare and can be unreal you entered: {height}"
+                f"Sorry above 200cm is invalid height, you entered: {height}"
+                "Please read Exception and Rare statement"
             )
     except ValueError as e:
             print(f"Invalid entry: {e}, please try again.\n ")
