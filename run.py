@@ -41,10 +41,10 @@ def get_user_data():
 
     while True:
 
-        user_one_name = input("Enter your name:\n")
-        user_one_age = int(input("Enter your age:\n"))
-        user_one_weight = int(input("Enter your weight(in kgs only):\n"))
-        user_one_height = int(input("Enter your height(in cms only):\n"))
+        user1_name = input("Enter your name:\n")
+        user1_age = int(input("Enter your age:\n"))
+        user1_weight = int(input("Enter your weight(in kgs only):\n"))
+        user1_height = int(input("Enter your height(in cms only):\n"))
 
         class User:
 
@@ -60,30 +60,30 @@ def get_user_data():
                 print(f"Your weight is {self.weight}kgs\n")
                 print(f"Your height is {self.height}cms\n")
 
-        display_user = User(user_one_name, user_one_age, user_one_weight, user_one_height)
+        display_user = User(user1_name, user1_age, user1_weight, user1_height)
         display_user.another()
-        weight = user_one_weight
-        height = user_one_height
-        user_age = user_one_age
+        weight = user1_weight
+        height = user1_height
+        user_age = user1_age
 
-        calculate_bmi(user_one_name, weight, height)
+        calculate_bmi(user1_name, weight, height)
 
-        if validate_input(user_one_name, weight, height, user_age):
+        if validate_input(user1_name, weight, height, user_age):
             print("Given entries are valid!")
             break
-    return user_one_name, weight, height, user_age
+    return user1_name, weight, height, user_age
 
 
-def validate_input(user_one_name, weight, height, user_age):
+def validate_input(user1_name, weight, height, user_age):
     """
     Inside the try, it converts all string values to integers,
     raises the ValueError if string cannot be converted to
     integers, or there aren't exact values as per requirement
     """
     try:
-        if user_one_name == " ":
+        if user1_name == " ":
             raise ValueError(
-                f"Please enter a name {user_one_name}"
+                f"Please enter a name {user1_name}"
             )
         elif user_age == " ":
             raise ValueError(
