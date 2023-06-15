@@ -3,10 +3,9 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import math
 
-import colorama 
-from colorama import Fore, Back, Style 
-colorama.init(autoreset= True)
-
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 
 
 print("Welcome to the Body_Mass_Index!\n")
@@ -24,22 +23,19 @@ print("from 2 years to 100 years and weight 5 kgs to 100 kgs plus the height")
 print("restrictions upto 200cm, please consider them before entering")
 print("your details! Good Luck! \n")
 
-
-    
 start = input("To start please type yes:\n ")
 
 while start.lower() != "yes":
     print(f"If you'd like to start please type 'yes'\n")
     start = input("To start please type yes:\n ")
     print(f"You said {start} to start")
-    
 
 
 def get_user_data():
     """
     Get the user data (name, age, body weight and height) from the
-    user to calculate BMI. Run a while loop to collect the valid 
-    data appropriate to the required age, the loop will be keep 
+    user to calculate BMI. Run a while loop to collect the valid
+    data appropriate to the required age, the loop will be keep
     requesting until the given data is valid.
     """
 
@@ -66,33 +62,32 @@ def get_user_data():
 
         display_user = User(user_one_name, user_one_age, user_one_weight, user_one_height)
         display_user.another()
-    
-    
-
-
         weight = user_one_weight
         height = user_one_height
         user_age = user_one_age
-        
-        calculate_bmi(user_one_name, weight, height)
 
+        calculate_bmi(user_one_name, weight, height)
 
         if validate_input(user_one_name, weight, height, user_age):
             print("Given entries are valid!")
             break
-        
     return user_one_name, weight, height, user_age
+
 
 def validate_input(user_one_name, weight, height, user_age):
     """
     Inside the try, it converts all string values to integers,
     raises the ValueError if string cannot be converted to
-    integers, or there aren't exact values as per requirement 
+    integers, or there aren't exact values as per requirement
     """
     try:
-        if user_one_name == "":
+        if user_one_name == " ":
             raise ValueError(
                 f"Please enter a name {user_one_name}"
+            )
+        elif user_age == " ":
+            raise ValueError(
+                f"Please enter a age {user_age}"
             )
         elif user_age < 5:
             raise ValueError(
@@ -113,33 +108,32 @@ def validate_input(user_one_name, weight, height, user_age):
         while height > 200:
             raise ValueError(
                 f"Sorry above 200cm is invalid height, you entered: {height}"
-                " " "Please read Exception and Rare statement or " 
+                " " "Please read Exception and Rare statement or "
             )
     except ValueError as e:
-            print(f"Invalid entry: {e}, please try again.\n ")
-            return False
+        print(f"Invalid entry: {e}, please try again.\n ")
+        return False
 
     return True
 
 
-
 def calculate_bmi(name, weight, height):
     """
-    It calculates the BMI of the data received from the user. 
+    It calculates the BMI of the data received from the user
     and generates the required result, it also tells
     the user if their wieght is good or high as per BMI
     calculations
-    """ 
-   
+    """
+
     height = height / 100
-    bmi = weight / (height ** 2) 
-    result = round(bmi,2)
-    print('\033[32m'f"Hey " + name +" "+ "your BMI is:", result)
+    bmi = weight / (height ** 2)
+    result = round(bmi, 2)
+    print('\033[32m'f"Hey " + name + " " + "your BMI is:", result)
 
     if result < 25:
-        print('\033[32m'+ name + " " + "You have a good weight according to BMI:)\n")
+        print('\033[32m' + name + " " + "Your weight is good as per BMI:)\n")
     else:
-        print('\033[31m' + name + " " + "sorry but your weight is a bit high\n")
+        print('\033[31m' + name + "" + "sorry but your weight is a bit high\n")
 
 
 def main():
@@ -159,9 +153,4 @@ def main():
         main()
 
 
-
 main()
-
-
-
-
