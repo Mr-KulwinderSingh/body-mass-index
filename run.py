@@ -3,19 +3,19 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 from pyfiglet import figlet_format
 
-
-figlet_format("BODY-MASS-INDEX", font = "standard")
-
-print(figlet_format("BODY-MASS-INDEX", font = "standard"))
-
 import math
 
 import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 
+figlet_format("BODY-MASS-INDEX", font="small")
 
-print("Welcome to the Body_Mass_Index!\n")
+print(figlet_format("BODY-MASS-INDEX", font="small"))
+
+
+print("            Welcome to the Body_Mass_Index!\n")
+print("--------------------------------------------------------------- ")
 print("As per the modern life style, and living in the world of technology")
 print("every person needs to know what category of BMI he is in\n")
 
