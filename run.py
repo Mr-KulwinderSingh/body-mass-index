@@ -1,6 +1,13 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+from pyfiglet import figlet_format
+
+
+figlet_format("BODY-MASS-INDEX", font = "standard")
+
+print(figlet_format("BODY-MASS-INDEX", font = "standard"))
+
 import math
 
 import colorama
@@ -14,14 +21,14 @@ print("every person needs to know what category of BMI he is in\n")
 
 print("-------------***** Exceptions and Rare *****--------------------")
 print("----------------------------------------------------------------")
-print("Adult women and men weighing 100kg who are between 201.0cm and ")
-print("219.0 cm tall are considered to be of a healthy weight as measured")
-print("by body mass index (bmi)2, but this BMI is restricted to 200cm height")
+print("Adult women and men weighing 100kg who are between 201.0cm and 219.0")
+print("cm tall are considered to be of a healthy weight as measured by body")
+print("  mass index (bmi)2, but this BMI is restricted to 200cm height ")
 print("----------------------------------------------------------------")
 print("This BMI calculator has limits i.e. it can take the age of the user")
 print("from 2 years to 100 years and weight 5 kgs to 100 kgs plus the height")
-print("restrictions upto 200cm, please consider them before entering")
-print("your details! Good Luck! \n")
+print("restrictions upto 200cm, please consider them before entering your")
+print(".                   details! Good Luck! \n")
 
 start = input("To start please type yes:\n ")
 
