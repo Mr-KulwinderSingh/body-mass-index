@@ -47,8 +47,8 @@ def get_user_data():
 
         user_one_name = input("Enter your name:\n")
         user_one_age = int(input("Enter your age:\n"))
-        user_one_weight = int(input("Enter your weight:\n"))
-        user_one_height = int(input("Enter your height:\n"))
+        user_one_weight = int(input("Enter your weight(in kgs only):\n"))
+        user_one_height = int(input("Enter your height(in cms only):\n"))
 
         class User:
 
@@ -60,9 +60,9 @@ def get_user_data():
 
             def another(self):
                 print(f"Your name is {self.name}\n")
-                print(f"Your age is {self.user_age}\n")
-                print(f"Your weight is {self.weight}\n")
-                print(f"Your height is {self.height}\n")
+                print(f"Your age is {self.user_age} years\n")
+                print(f"Your weight is {self.weight}kgs\n")
+                print(f"Your height is {self.height}cms\n")
 
         display_user = User(user_one_name, user_one_age, user_one_weight, user_one_height)
         display_user.another()
@@ -77,20 +77,24 @@ def get_user_data():
         calculate_bmi(user_one_name, weight, height)
 
 
-        if validate_input(weight, height, user_age):
+        if validate_input(user_one_name, weight, height, user_age):
             print("Given entries are valid!")
             break
         
     return user_one_name, weight, height, user_age
 
-def validate_input(weight, height, user_age):
+def validate_input(user_one_name, weight, height, user_age):
     """
     Inside the try, it converts all string values to integers,
     raises the ValueError if string cannot be converted to
     integers, or there aren't exact values as per requirement 
     """
     try:
-        if user_age < 5:
+        if user_one_name == "":
+            raise ValueError(
+                f"Please enter a name {user_one_name}"
+            )
+        elif user_age < 5:
             raise ValueError(
                 f"Sorry age should be above 5 years you provided {user_age}"
             )
@@ -109,7 +113,7 @@ def validate_input(weight, height, user_age):
         while height > 200:
             raise ValueError(
                 f"Sorry above 200cm is invalid height, you entered: {height}"
-                " " "Please read Exception and Rare statement" "or"
+                " " "Please read Exception and Rare statement or " 
             )
     except ValueError as e:
             print(f"Invalid entry: {e}, please try again.\n ")
