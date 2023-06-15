@@ -44,32 +44,44 @@ def get_user_data():
     """
 
     while True:
+
+        user_one_name = input("Enter your name:\n")
+        user_one_age = int(input("Enter your age:\n"))
+        user_one_weight = int(input("Enter your weight:\n"))
+        user_one_height = int(input("Enter your height:\n"))
+
+        class User:
+
+            def __init__(self, name, user_age, weight, height):
+                self.name = name
+                self.user_age = user_age
+                self.weight = weight
+                self.height = height
+
+            def another(self):
+                print(f"Your name is {self.name}\n")
+                print(f"Your age is {self.user_age}\n")
+                print(f"Your weight is {self.weight}\n")
+                print(f"Your height is {self.height}\n")
+
+        display_user = User(user_one_name, user_one_age, user_one_weight, user_one_height)
+        display_user.another()
     
-        print("Great !")
-        name = input("Please enter your name:\n")
-        
-        age = int(input("Please enter your age:\n"))
-        
-        print("Please provide your body weight(in kgs)")
-        data1 = int(input("Enter your weight here:\n "))
-
-        print("now enter your height(only in cms)")
-        data2 = int(input("Enter the height here:\n "))
-        print(f"Your weight is : {data1}kgs and height is :{data2}cms\n")
+    
 
 
-        weight = data1 
-        height = data2
-        user_age = age
+        weight = user_one_weight
+        height = user_one_height
+        user_age = user_one_age
         
-        calculate_bmi(name, weight, height)
+        calculate_bmi(user_one_name, weight, height)
 
 
         if validate_input(weight, height, user_age):
             print("Given entries are valid!")
             break
         
-    return name, weight, height, user_age
+    return user_one_name, weight, height, user_age
 
 def validate_input(weight, height, user_age):
     """
@@ -94,10 +106,10 @@ def validate_input(weight, height, user_age):
             raise ValueError(
                 f"Sorry weight should be a valid number you provided {weight}"
             )
-        elif height > 200:
+        while height > 200:
             raise ValueError(
                 f"Sorry above 200cm is invalid height, you entered: {height}"
-                "Please read Exception and Rare statement"
+                " " "Please read Exception and Rare statement" "or"
             )
     except ValueError as e:
             print(f"Invalid entry: {e}, please try again.\n ")
