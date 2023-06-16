@@ -1,6 +1,3 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
 from pyfiglet import figlet_format
 
 import math
@@ -9,9 +6,9 @@ import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 
-figlet_format("BODY-MASS-INDEX", font="small")
+figlet_format("BODY MASS INDEX", font="small")
 
-print(figlet_format("BODY-MASS-INDEX", font="small"))
+print(figlet_format("BODY MASS INDEX", font="small"))
 
 
 print("            Welcome to the Body_Mass_Index!\n")
@@ -54,6 +51,12 @@ def get_user_data():
         user1_height = int(input("Enter your height(in cms only):\n"))
 
         class User:
+            """
+            Class User helps to manipulate and represent data in the form it
+            has to be in the terminal, it correspond with the main function,
+            takes the user input and segregate accordingly
+
+            """
 
             def __init__(self, name, user_age, weight, height):
                 self.name = name
