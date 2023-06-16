@@ -78,8 +78,8 @@ Although technically not typography, the font art I used within my project was i
 
 ![font](assets/readmeimages/title.png)
 
-### Colour Choices ###
-The colours I've chosen were inspired by the french flag. Mainly because when thinking of a standout group of colours for musical theatre, the french flag is such a prominant option due to the musical Les Miserables and it helps the screen pop out too. So I used the Linear gradient on [Gradient CSS](http://www.gradientcss.com/) to help me achieve this. 
+### Colour as per terminal and app ###
+Multiple colours have not been used to keep the design of the app very simple and clear according to the mock terminal and app layout. Though there is text colour variation between the good BMI presentation and overweight with the different colour text messages. Only 2 colour codes have been used '\033[32m' and '\033[31m'  Colours have been taken from the Colorama module. This module is not a built-in module in Python, but it has been installed through the pip install method.
 
 ![Gradient backdrop](assets/readmeimages/gradientcss.png)
 
