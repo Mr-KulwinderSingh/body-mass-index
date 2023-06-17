@@ -24,6 +24,7 @@ It is very easy to use and understand, a userfiendly design where you just have 
     * [Testing & Bugs](<#testing--bugs>)
     * [Colours & Simplicity](<#colours--simplicity>)
     * [Technologies used](<#technologies-used>)
+    * [Future Changes](<#future-changes>)
     * [Deployment](<#deployment>)
     * [Forking the repository](<#forking-the-respository>)
     * [Credits & Acknowledgment](<#credits--acknowlegement>)
@@ -110,6 +111,11 @@ Multiple colours have not been used to keep the design of the app very simple an
 
 # Technologies used #
 Basic code structure is written in Python3 the latest version of Python, some of the contents of the code are not built in libraries and modules. Colorama and Pyfiglet, figlet format were downloaded and installed through the pip3 installer and sent to Heroku via requirements file for deployment, it has been deployed through Heroku's mock terminal's set format app(a standard app for students). Pyfiglet was used to give a nice welcome page look through the ASCII text.
+
+
+# Future Changes #
+
+I would make an improvement in future and add a list comprehension to turn the strings into integers to help users to enter integers only while entering the data. I would also give more feedback and suggestions for a healthy weight as per BMI.
 
 
 # Deployment #
