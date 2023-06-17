@@ -23,7 +23,7 @@ print("cm tall are considered to be of a healthy weight as measured by body")
 print("  mass index (bmi)2, but this BMI is restricted to 200cm height ")
 print("----------------------------------------------------------------")
 print("This BMI calculator has limits i.e. it can take the age of the user")
-print("from 2 years to 100 years and weight 5 kgs to 100 kgs plus the height")
+print("from 5 years to 100 years and weight 5 kgs to 100 kgs plus the height")
 print("restrictions upto 200cm, please consider them before entering your")
 print(".                   details! Good Luck! \n")
 
@@ -95,6 +95,10 @@ def validate_input(user1_name, weight, height, user_age):
             raise ValueError(
                 f"Please enter a name {user1_name}"
             )
+        elif (len(user1_name) <= 2):
+            raise ValueError(
+                f"user name should be at least 3 characters long"
+                )
         elif user_age == " ":
             raise ValueError(
                 f"Please enter a age {user_age}"
@@ -143,7 +147,7 @@ def calculate_bmi(name, weight, height):
     if result < 25:
         print('\033[32m' + name + " " + "Your weight is good as per BMI:)\n")
     else:
-        print('\033[31m' + name + "" + "sorry but your weight is a bit high\n")
+        print('\033[31m' + name + " " + "sorry your weight is a bit high\n")
 
 
 def main():
