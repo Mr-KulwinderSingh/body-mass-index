@@ -1,6 +1,6 @@
 from pyfiglet import figlet_format
 
-import math
+import math as m
 
 import colorama
 from colorama import Fore, Back, Style
@@ -46,9 +46,9 @@ def get_user_data():
     while True:
 
         user1_name = input("Enter your name:\n")
-        user1_age = int(input("Enter your age:\n"))
-        user1_weight = int(input("Enter your weight(in kgs only):\n"))
-        user1_height = int(input("Enter your height(in cms only):\n"))
+        user1_age = input("Enter your age:\n")
+        user1_weight = input("Enter your weight(in kgs only):\n")
+        user1_height = input("Enter your height(in cms only):\n")
 
         class User:
             """
@@ -72,9 +72,9 @@ def get_user_data():
 
         display_user = User(user1_name, user1_age, user1_weight, user1_height)
         display_user.another()
-        weight = user1_weight
-        height = user1_height
-        user_age = user1_age
+        weight = int(float(user1_weight))
+        height = int(float(user1_height))
+        user_age = int(float(user1_age))
 
         calculate_bmi(user1_name, weight, height)
 
@@ -91,41 +91,30 @@ def validate_input(user1_name, weight, height, user_age):
     integers, or there aren't exact values as per requirement
     """
     try:
+        
+
         if user1_name == " ":
+            print('Blank space is not allowed, please enter a name')
+            return False
+        if (len(user1_name) <= 2):
+            print("user name should be at least 3 characters long")
+            return False
+        if user_age < 5 or user_age > 100:
             raise ValueError(
-                f"Please enter a name {user1_name}"
+                "Oops! Invalid age range")
+            return False
+        if weight < 10 or weight > 120:
+            raise ValueError(
+            f"Sorry weight should be a valid number you entered {weight}"
             )
-        elif (len(user1_name) <= 2):
+            return False
+        if height < 80 or height > 200:
             raise ValueError(
-                f"user name should be at least 3 characters long"
-                )
-        elif user_age == " ":
-            raise ValueError(
-                f"Please enter a age {user_age}"
-            )
-        elif user_age < 5:
-            raise ValueError(
-                f"Sorry age should be above 5 years you provided {user_age}"
-            )
-        elif user_age > 100:
-            raise ValueError(
-                f"Sorry max age to calculate BMI is 100 your age {user_age}"
-            )
-        elif weight < 5:
-            raise ValueError(
-                f"Sorry weight should be a valid number you provided {weight}"
-            )
-        elif weight > 120:
-            raise ValueError(
-                f"Sorry weight should be a valid number you provided {weight}"
-            )
-        while height > 200:
-            raise ValueError(
-                f"Sorry above 200cm is invalid height, you entered: {height}"
-                " " "Please read Exception and Rare statement or "
-            )
+                f"Sorry Invalid height entered:{height}"
+            ) 
     except ValueError as e:
-        print(f"Invalid entry: {e}, please try again.\n ")
+        
+        print(f"Invalid entry:{e}, please try again.\n ")
         return False
 
     return True
