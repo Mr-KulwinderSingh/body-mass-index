@@ -38,10 +38,10 @@ def get_user_data():
     print("restrictions upto 200cm, please consider them before entering your")
     print(".                   details! Good Luck! \n")
 
-    start = input("To start please type yes:\n ")
+    start = input("To start using the BMI app please type yes:\n ")
 
     while start.lower() != "yes":
-        print(f"BMI app needs your permission, please type yes to start!\n")
+        print(Fore.RED + f"In order to start the app, user has to type yes!\n ")
         start = input("To start please type yes:\n ")
         print(f"You said {start} to start")
 
@@ -51,9 +51,26 @@ def get_user_data():
     while True:
 
         user1_name = input("Enter your Name:\n")
-        user1_age = input("Enter your Age:\n")
-        user1_weight = input("Enter your Weight(in kgs only):\n")
-        user1_height = input("Enter your Height(in cms only):\n")
+        if user1_name.strip() == "":     
+            print(Fore.RED + " User name is required. Please enter a valid user name.")
+            continue
+        elif not user1_name.isalpha():  
+            print(Fore.RED + " User name should not contain numbers or symbols. Enter a valid user name.")
+            continue
+        user1_age = input("Enter your Age (a whole number only):\n")
+        if not user1_age.isdigit():
+            print(Fore.RED + " User age is required. Please enter a valid age(a whole number).")
+            continue
+        user1_weight = input("Enter your Weight(in kgs only, do not enter decimal places):\n")
+        if not user1_weight.isdigit():
+            print(Fore.RED + " User weight is required. Please enter a valid weight(a whole number).")
+            continue
+        user1_height = input("Enter your Height(in cms only, do not enter decimal places):\n")
+        if not user1_height.isdigit():
+            print(Fore.RED + " User height is required. Please enter a valid height(a whole number).")
+            continue
+        else:
+            print("Data entered by the user:\n ")
 
         class User:
             """
@@ -70,10 +87,10 @@ def get_user_data():
                 self.height = height
 
             def another(self):
-                print(f"Your name is {self.name}\n")
-                print(f"You are {self.user_age} years old\n")
-                print(f"Your weight is {self.weight}kgs\n")
-                print(f"Your height is {self.height}cms\n")
+                print(Fore.YELLOW +f"Your name is {self.name}\n")
+                print(Fore.YELLOW +f"You are {self.user_age} years old\n")
+                print(Fore.YELLOW +f"Your weight is {self.weight}kgs\n")
+                print(Fore.YELLOW +f"Your height is {self.height}cms\n")
 
         display_user = User(user1_name, user1_age, user1_weight, user1_height)
         display_user.another()
@@ -88,7 +105,7 @@ def get_user_data():
         validate_user_height(height)
 
         if validate_user_age(user_age):
-            print("All entries were a valid data provided by the user!")
+            print("Thanks for using BMI Calculator App!\n ")
             break
     return user1_name, weight, height, user_age
 
@@ -101,37 +118,35 @@ def validate_username(user1_name):
     """
 
     try:      
-        if user1_name == " ":
-            raise ValueError(
-                f"'Blank space error!', Please enter a name {user1_name}"
-            )
-        elif (len(user1_name) <= 2) or (len(user1_name) >= 10):
+        
+        if (len(user1_name) <= 2) or (len(user1_name) >= 10):
                 raise ValueError(
-                    f"User name should be min 3 or max 10 characters long"
+                    Fore.RED + f"User name should be min 3 or max 10 characters long"
                 )
     except ValueError as e:
         print(f"Invalid entry: {e}, please try again.\n ")
         return False
-        print("Due to the error program ended")
+        
     return True
+
 
 def validate_user_age(user_age):
     """
-    Inside this function checks if the user enters an integer or
-    not, plus it also checks an error if the provided age range is 
-    valid and if it's not valid as per the BMI age range, value error 
-    will be triggered, empty or blank space can also be detected here
-    in this validation function
+    This function checks if the user enters an integer or not,
+    plus it also checks the error if the provided age range is 
+    valid and if it's not valid value error will be triggered,
+    any other exception will detected here and informed to the
+    user 
     """
     try:
         if user_age < 5 or user_age > 100:
             raise ValueError(
-                f"Please correct user age range in order to calculate BMI"
+                Fore.RED +f"Please correct user age range in order to calculate BMI"
             )
     except ValueError as e:
         print(f"Invalid entry: {e}, please try again.\n ")
         return False
-        print("program ended!")
+
     return True
 
 def validate_user_weight(weight):
@@ -146,12 +161,12 @@ def validate_user_weight(weight):
 
         if weight < 10 or weight > 120:
             raise ValueError(
-            f"Sorry Invalid weight range entered: {weight}"
+            Fore.RED +f"Sorry Invalid weight range entered: {weight}"
             )
     except ValueError as e:
         print(f"Invalid entry: {e}, please try again.\n ")
         return False
-        print("program ended!")
+        
     return True
 
 def validate_user_height(height):
@@ -167,7 +182,7 @@ def validate_user_height(height):
 
         if height < 80 or height > 200:
             raise ValueError(
-                f"Sorry Invalid height range entered:{height}"
+                Fore.RED +f"Sorry Invalid height range entered:{height}"
             ) 
     except ValueError as e:
         print(f"Invalid entry:{e}, please try again.\n ")
@@ -189,9 +204,9 @@ def calculate_bmi(name, weight, height):
     print('\033[32m'f"Hey " + name + " " + "your BMI is:", result)
 
     if result < 25:
-        print('\033[32m' + name + " " + "Your weight is good as per BMI:)\n")
+        print(Fore.GREEN + name + " " + "Your weight is good as per BMI:)\n")
     else:
-        print('\033[31m' + name + " " + "sorry but your weight is a bit high\n")
+        print(Fore.RED + name + " " + "sorry but your weight is a bit high\n")
 
 
 def main():
